@@ -42,7 +42,7 @@ function loadDquoteJS()
 
     if (!empty($options['display_quick_reply']) && !empty($context['current_topic'])) {
 
-        // TODO: Не грузить js для тех у кого нет прав отвечать
+        // TODO: don't load  js if user not have permissions to reply
         loadLanguage('Dquote/');
         $txt['quote'] = $txt['dQuoteSelection_txt'];
         $context['insert_after_template'] .= '
