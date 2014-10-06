@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info">
+
+    <id>digger:dQuoteSelection</id>
+    <name>dQuoteSelection</name>
+    <type>modification</type>
+    <version>2.6</version>
+
+    <install for="2.0 - 2.0.99">
+        <readme type="file" parsebbc="true">readme/english.txt</readme>
+        <readme type="file" parsebbc="true" lang="russian">readme/russian.txt</readme>
+        <readme type="file" parsebbc="true" lang="russian-utf8">readme/russian-utf8.txt</readme>
+        <require-dir name="Sources" destination="$boarddir"/>
+        <require-dir name="Themes" destination="$boarddir"/>
+        <code>hooks.php</code>
+    </install>
+
+    <uninstall for="2.0 - 2.0.99">
+        <remove-dir name="$themedir/languages/Dquote"/>
+        <remove-file name="$themedir/scripts/dquote.js"/>
+        <remove-file name="$sourcedir/Mod-Dquote.php"/>
+        <code>hooks.php</code>
+    </uninstall>
+
+</package-info>

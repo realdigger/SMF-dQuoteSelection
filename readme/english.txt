@@ -1,0 +1,11 @@
+[size=10pt][b]dQuoteSelection[/b][/size] 
+[url]http://mysmf.ru/mods/dquote-selection[/url]
+[hr]
+
+[list]
+[li]This mod adds ability to quote any selected text in the Quick Reply and Post reply areas.[/li]
+[/list]
+
+[hr]
+Attribution-NonCommercial-NoDerivatives 4.0 International
+[center]This work is licensed under a [url=http://creativecommons.org/licenses/by-nc-nd/4.0/]Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License[/url] (applies to all versions past and present).[/center]
