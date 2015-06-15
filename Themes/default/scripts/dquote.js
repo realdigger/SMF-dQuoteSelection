@@ -47,6 +47,7 @@ function onTextReceived(XMLDoc) {
     else {
         if (dQuoteText) document.forms.postmodify.message.value += sQuoteText.match(/^\[quote(.*)]/ig) + dQuoteText + '[/quote]' + '\n'
         else document.forms.postmodify.message.value += sQuoteText + '\n';
+        document.forms.postmodify.message.focus();
     }
 
     dQuoteText = '';
