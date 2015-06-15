@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Project: dQuote Selection
  * Version: 2.6
@@ -29,7 +28,7 @@ function addDquoteCopyright()
     global $context;
 
     if ($context['current_action'] == 'credits')
-        $context['copyrights']['mods'][] = '<a href="http://mysmf.ru/mods/dquote-selection" target="_blank">dQuoteSelection</a> &copy; 2007-2014, digger';
+        $context['copyrights']['mods'][] = '<a href="http://mysmf.ru/mods/dquote-selection" target="_blank">dQuoteSelection</a> &copy; 2007-2015, digger';
 }
 
 
@@ -40,14 +39,12 @@ function loadDquoteJS()
 {
     global $context, $settings, $options, $txt;
 
-    if (!empty($options['display_quick_reply']) && !empty($context['current_topic'])) {
+    // TODO: don't load if user not have permissions to reply $context['can_quote'] $txt['bbc_quote']
+    if ((!empty($options['display_quick_reply']) || $context['current_action'] == 'post') && !empty($context['current_topic'])) {
 
-        // TODO: don't load  js if user not have permissions to reply
         loadLanguage('Dquote/');
-        $txt['quote'] = $txt['dQuoteSelection_txt'];
+        $txt['quote'] = $txt['bbc_quote'] = $txt['dQuoteSelection_txt'];
         $context['insert_after_template'] .= '
         <script type="text/javascript" src="' . $settings['default_theme_url'] . '/scripts/dquote.js?26"></script>';
     }
 }
-
-?>
