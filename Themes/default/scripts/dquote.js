@@ -8,9 +8,16 @@
 
 var dQuoteText;
 
+
 if (typeof oQuickReply != 'undefined') {
     oQuickReply.quote = insertReplyText;
 }
+
+
+if (typeof oEditorHandle_message != 'undefined') {
+    insertQuoteFast = insertReplyText;
+}
+
 
 function getSelectedText() {
 
@@ -35,6 +42,7 @@ function onTextReceived(XMLDoc) {
     if (typeof oEditorHandle_message != 'undefined' && oEditorHandle_message.bRichTextEnabled) {
         if (dQuoteText) oEditorHandle_message.insertText(sQuoteText.match(/^\[quote(.*)]/ig) + dQuoteText + '[/quote]' + '<br />', false, true)
         else oEditorHandle_message.insertText(sQuoteText + '<br />', false, true);
+        oEditorHandle_message.focus();
     }
     else {
         if (dQuoteText) document.forms.postmodify.message.value += sQuoteText.match(/^\[quote(.*)]/ig) + dQuoteText + '[/quote]' + '\n'
@@ -48,6 +56,8 @@ function onTextReceived(XMLDoc) {
 function insertReplyText(msgId) {
 
     dQuoteText = getSelectedText();
+    if (dQuoteText == '' && oQuickReply.bCollapsed) return true;
+
     ajax_indicator(true);
     getXMLDocument(smf_prepareScriptUrl(smf_scripturl) + 'action=quotefast;quote=' + msgId + ';xml;pb=message', onTextReceived);
     if (oQuickReply.bCollapsed) oQuickReply.swap();
