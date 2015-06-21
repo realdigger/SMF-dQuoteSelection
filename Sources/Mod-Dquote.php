@@ -1,7 +1,7 @@
 <?php
 /**
  * Project: dQuote Selection
- * Version: 2.6
+ * Version: 2.6.1
  * File: Mod-dQuote.php
  * Author: digger @ http://mysmf.ru
  * License: CC BY-NC-ND 4.0 http://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -16,7 +16,7 @@ if (!defined('SMF'))
 function loadDquoteHooks()
 {
     add_integration_function('integrate_menu_buttons', 'addDquoteCopyright', false);
-    add_integration_function('integrate_load_theme', 'loadDquoteJS', false);
+    add_integration_function('integrate_menu_buttons', 'loadDquoteJS', false);
 }
 
 
@@ -39,12 +39,21 @@ function loadDquoteJS()
 {
     global $context, $settings, $options, $txt;
 
-    // TODO: don't load if user not have permissions to reply $context['can_quote'] $txt['bbc_quote']
-    if ((!empty($options['display_quick_reply']) || $context['current_action'] == 'post') && !empty($context['current_topic'])) {
+    if (empty($context['current_topic']) && empty($context['can_quote'])) return;
 
-        loadLanguage('Dquote/');
-        $txt['quote'] = $txt['bbc_quote'] = $txt['dQuoteSelection_txt'];
-        $context['insert_after_template'] .= '
-        <script type="text/javascript" src="' . $settings['default_theme_url'] . '/scripts/dquote.js?26"></script>';
+    // Load language file
+    loadLanguage('Dquote/');
+
+    // Full Reply
+    if ($context['current_action'] == 'post') {
+        $txt['bbc_quote'] = $txt['dQuoteSelection_txt'];
+    } // Quick Reply
+    else if (!empty($options['display_quick_reply'])) {
+        $txt['quote'] = $txt['dQuoteSelection_txt'];
     }
+
+    // Load JS
+    $context['insert_after_template'] .= '
+        <script type="text/javascript" src="' . $settings['default_theme_url'] . '/scripts/dquote.js?261"></script>';
+
 }

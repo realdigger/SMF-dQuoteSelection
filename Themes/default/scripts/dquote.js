@@ -1,6 +1,6 @@
 /**
  * Project: dQuote Selection
- * Version: 2.6
+ * Version: 2.6.1
  * File: dquote.js
  * Author: digger @ http://mysmf.ru
  * License: CC BY-NC-ND 4.0 http://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -13,11 +13,9 @@ if (typeof oQuickReply != 'undefined') {
     oQuickReply.quote = insertReplyText;
 }
 
-
 if (typeof oEditorHandle_message != 'undefined') {
     insertQuoteFast = insertReplyText;
 }
-
 
 function getSelectedText() {
 
@@ -57,11 +55,11 @@ function onTextReceived(XMLDoc) {
 function insertReplyText(msgId) {
 
     dQuoteText = getSelectedText();
-    if (dQuoteText == '' && oQuickReply.bCollapsed) return true;
+    if (dQuoteText == '' && typeof oQuickReply != 'undefined' && oQuickReply.bCollapsed) return true;
 
     ajax_indicator(true);
     getXMLDocument(smf_prepareScriptUrl(smf_scripturl) + 'action=quotefast;quote=' + msgId + ';xml;pb=message', onTextReceived);
-    if (oQuickReply.bCollapsed) oQuickReply.swap();
+    if (typeof oQuickReply != 'undefined' && oQuickReply.bCollapsed) oQuickReply.swap();
 
     window.location.hash = '#quickreply';
 
