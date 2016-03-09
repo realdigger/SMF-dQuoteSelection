@@ -10,6 +10,4 @@
 
 [hr]
 
-[center]Этот мод распространяется под лицензией [url=http://creativecommons.org/licenses/by-nc-nd/4.0/deed.ru]Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License[/url] (включая все предыдущие и последующие версии).
-
-[img]http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-nd.png[/img]
+Этот мод распространяется под лицензией GPLv3

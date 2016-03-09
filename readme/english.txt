@@ -7,5 +7,4 @@
 [/list]
 
 [hr]
-Attribution-NonCommercial-NoDerivatives 4.0 International
-[center]This work is licensed under a [url=http://creativecommons.org/licenses/by-nc-nd/4.0/]Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License[/url] (applies to all versions past and present).[/center]
+This work is licensed under a GPLv3 License
