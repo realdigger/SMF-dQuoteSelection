@@ -7,4 +7,4 @@
 [/list]
 
 [hr]
-This work is licensed under a GPLv3 License
+This work is licensed under The MIT License (MIT)

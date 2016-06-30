@@ -1,10 +1,10 @@
 <?php
 /**
  * Project: dQuote Selection
- * Version: 2.6
+ * Version: 2.6.2
  * File: hooks.php
  * Author: digger @ http://mysmf.ru
- * License: CC BY-NC-ND 4.0 http://creativecommons.org/licenses/by-nc-nd/4.0/
+ * License: The MIT License (MIT)
  *
  * To run this install manually please make sure you place this
  * in the same place and SSI.php and index.php

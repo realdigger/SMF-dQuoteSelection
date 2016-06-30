@@ -1,6 +1,6 @@
 # SMF dQuoteSelection mod
 * **Author:** digger http://mysmf.ru
-* **License:** GPLv3
+* **License:** The MIT License (MIT)
 * **Compatible with:** SMF 2.0
 
 ## Description

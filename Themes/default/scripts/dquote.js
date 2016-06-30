@@ -1,9 +1,9 @@
 /**
  * Project: dQuote Selection
- * Version: 2.6.1
+ * Version: 2.6.2
  * File: dquote.js
  * Author: digger @ http://mysmf.ru
- * License: CC BY-NC-ND 4.0 http://creativecommons.org/licenses/by-nc-nd/4.0/
+ * License: The MIT License (MIT)
  */
 
 var dQuoteText;

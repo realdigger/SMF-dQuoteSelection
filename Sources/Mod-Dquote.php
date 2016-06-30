@@ -1,10 +1,10 @@
 <?php
 /**
  * Project: dQuote Selection
- * Version: 2.6.1
+ * Version: 2.6.2
  * File: Mod-dQuote.php
  * Author: digger @ http://mysmf.ru
- * License: CC BY-NC-ND 4.0 http://creativecommons.org/licenses/by-nc-nd/4.0/
+ * License: The MIT License (MIT)
  */
 
 if (!defined('SMF'))
@@ -28,7 +28,7 @@ function addDquoteCopyright()
     global $context;
 
     if ($context['current_action'] == 'credits')
-        $context['copyrights']['mods'][] = '<a href="http://mysmf.ru/mods/dquote-selection" target="_blank">dQuoteSelection</a> &copy; 2007-2015, digger';
+        $context['copyrights']['mods'][] = '<a href="http://mysmf.ru/mods/dquote-selection" target="_blank">dQuoteSelection</a> &copy; 2007-2016, digger';
 }
 
 
@@ -54,6 +54,6 @@ function loadDquoteJS()
 
     // Load JS
     $context['insert_after_template'] .= '
-        <script type="text/javascript" src="' . $settings['default_theme_url'] . '/scripts/dquote.js?261"></script>';
+        <script type="text/javascript" src="' . $settings['default_theme_url'] . '/scripts/dquote.js?262"></script>';
 
 }
