@@ -42,7 +42,7 @@ function loadDquoteJS()
     if (empty($context['current_topic']) && empty($context['can_quote'])) return;
 
     // Load language file
-    loadLanguage('Dquote/');
+    loadLanguage('Dquote/Dquote');
 
     // Full Reply
     if ($context['current_action'] == 'post' || $context['current_action'] == 'post2') {
@@ -54,6 +54,6 @@ function loadDquoteJS()
 
     // Load JS
     $context['insert_after_template'] .= '
-        <script type="text/javascript" src="' . $settings['default_theme_url'] . '/scripts/dquote.js?262"></script>';
+        <script type="text/javascript" src="' . $settings['default_theme_url'] . '/scripts/dquote.js?263"></script>';
 
 }
