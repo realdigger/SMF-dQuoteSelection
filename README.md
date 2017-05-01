@@ -2,6 +2,7 @@
 * **Author:** digger http://mysmf.ru
 * **License:** The MIT License (MIT)
 * **Compatible with:** SMF 2.0
+* **Languages:** English, Italian, Polish, Portuguese Brazilian, Russian, Spanish, Turkish 
 
 ## Description
 This mod adds ability to quote any selected text for the Quick Reply and Post reply areas.
