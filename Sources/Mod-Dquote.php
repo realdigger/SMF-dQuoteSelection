@@ -1,7 +1,7 @@
 <?php
 /**
  * Project: dQuote Selection
- * Version: 2.6.2
+ * Version: 2.6.3
  * File: Mod-dQuote.php
  * Author: digger @ http://mysmf.ru
  * License: The MIT License (MIT)
@@ -28,7 +28,7 @@ function addDquoteCopyright()
     global $context;
 
     if ($context['current_action'] == 'credits')
-        $context['copyrights']['mods'][] = '<a href="http://mysmf.ru/mods/dquote-selection" target="_blank">dQuoteSelection</a> &copy; 2007-2016, digger';
+        $context['copyrights']['mods'][] = '<a href="http://mysmf.ru/mods/dquote-selection" target="_blank">dQuoteSelection</a> &copy; 2007-2017, digger';
 }
 
 
@@ -45,7 +45,7 @@ function loadDquoteJS()
     loadLanguage('Dquote/');
 
     // Full Reply
-    if ($context['current_action'] == 'post') {
+    if ($context['current_action'] == 'post' || $context['current_action'] == 'post2') {
         $txt['bbc_quote'] = $txt['dQuoteSelection_txt'];
     } // Quick Reply
     else if (!empty($options['display_quick_reply'])) {
