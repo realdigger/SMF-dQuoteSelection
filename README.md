@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/realdigger/SMF-dQuoteSelection.svg?branch=master)](https://travis-ci.org/realdigger/SMF-dQuoteSelection)
 # SMF dQuoteSelection mod
 * **Author:** digger http://mysmf.ru
 * **License:** The MIT License (MIT)
