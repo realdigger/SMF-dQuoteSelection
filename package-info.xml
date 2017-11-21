@@ -5,20 +5,20 @@
     <id>digger:dQuoteSelection</id>
     <name>dQuoteSelection</name>
     <type>modification</type>
-    <version>2.6.3</version>
+    <version>2.6.4</version>
 
     <install for="2.0 - 2.0.99">
         <readme type="file">README.md</readme>
         <require-dir name="Sources" destination="$boarddir"/>
         <require-dir name="Themes" destination="$boarddir"/>
-        <code>hooks.php</code>
+        <database>hooks.php</database>
     </install>
 
     <uninstall for="2.0 - 2.0.99">
         <remove-dir name="$themedir/languages/Dquote"/>
         <remove-file name="$themedir/scripts/dquote.js"/>
         <remove-file name="$sourcedir/Mod-Dquote.php"/>
-        <code>hooks.php</code>
+        <database>hooks.php</database>
     </uninstall>
 
 </package-info>
