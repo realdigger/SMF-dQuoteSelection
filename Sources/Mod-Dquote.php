@@ -28,7 +28,7 @@ function addDquoteCopyright()
     global $context;
 
     if ($context['current_action'] == 'credits')
-        $context['copyrights']['mods'][] = '<a href="http://mysmf.net/mods/dquote-selection" target="_blank">dQuoteSelection</a> &copy; 2007-2018, digger';
+        $context['copyrights']['mods'][] = '<a href="http://mysmf.net/mods/dquote-selection" target="_blank">dQuoteSelection</a> &copy; 2007-2019, digger';
 }
 
 
