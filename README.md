@@ -1,7 +1,6 @@
 [![GitHub release](https://img.shields.io/github/release/realdigger/SMF-dQuoteSelection.svg)](https://github.com/realdigger/SMF-dQuoteSelection/releases)
 [![Build Status](https://travis-ci.org/realdigger/SMF-dQuoteSelection.svg?branch=master)](https://travis-ci.org/realdigger/SMF-dQuoteSelection)
 [![SMF](https://img.shields.io/badge/SMF-2.0-blue.svg?style==flat)](https://simplemachines.org)
-![Hooks](https://img.shields.io/badge/hooks%20only-✓-blue.svg?style==flat)
 [![license](https://img.shields.io/github/license/realdigger/SMF-dQuoteSelection.svg)](https://github.com/realdigger/SMF-dQuoteSelection/blob/master/license.txt)
 # SMF dQuote Selection and Notification [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=SMF%20dQuoteSelection.%20This%20mod%20adds%20ability%20to%20quote%20any%20selected%20text%20for%20the%20Quick%20Reply%20and%20Post%20reply%20areas.&url=https://github.com/realdigger/SMF-dQuoteSelection&hashtags=smf,dQuoteSelection)
 * **Author:** digger https://mysmf.net
