@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<modification xmlns="http://www.simplemachines.org/xml/modification">
+    <id>digger:dQuoteSelection</id>
+    <name>dQuoteSelection</name>
+
+    <file name="$sourcedir/Subs-Post.php">
+        <operation>
+            <search position="after"><![CDATA[
+	// Fix the attachments.
+]]></search>
+            <add><![CDATA[
+	call_integration_hook('integrate_dquote_notification', array($msgOptions, $topicOptions, $posterOptions)); // dQuote notification hook
+]]></add>
+        </operation>
+    </file>
+
+</modification>

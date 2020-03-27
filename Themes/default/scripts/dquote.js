@@ -1,13 +1,12 @@
 /**
  * Project: dQuote Selection
- * Version: 2.6.2
+ * Version: 2.7.0
  * File: dquote.js
  * Author: digger @ http://mysmf.ru
  * License: The MIT License (MIT)
  */
 
 var dQuoteText;
-
 
 if (typeof oQuickReply != 'undefined') {
     oQuickReply.quote = insertReplyText;
@@ -21,11 +20,9 @@ function getSelectedText() {
 
     if (window.getSelection) {
         return window.getSelection().toString();
-    }
-    else if (document.getSelection) {
+    } else if (document.getSelection) {
         return document.getSelection();
-    }
-    else if (document.selection) {
+    } else if (document.selection) {
         return document.selection.createRange().text;
     }
     return false;
@@ -41,8 +38,7 @@ function onTextReceived(XMLDoc) {
         if (dQuoteText) oEditorHandle_message.insertText(sQuoteText.match(/^\[quote(.*)]/ig) + dQuoteText + '[/quote]' + '<br />', false, true)
         else oEditorHandle_message.insertText(sQuoteText + '<br />', false, true);
         oEditorHandle_message.focus();
-    }
-    else {
+    } else {
         if (dQuoteText) document.forms.postmodify.message.value += sQuoteText.match(/^\[quote(.*)]/ig) + dQuoteText + '[/quote]' + '\n'
         else document.forms.postmodify.message.value += sQuoteText + '\n';
         document.forms.postmodify.message.focus();
@@ -65,5 +61,3 @@ function insertReplyText(msgId) {
 
     return false;
 }
-
-

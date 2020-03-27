@@ -1,0 +1,26 @@
+[b]SMF dQuote Selection and Notification mod[/b]
+
+Author: digger https://mysmf.net
+License: The MIT License (MIT)
+Compatible with: SMF 2.0
+Languages: English, Italian, Polish, Portuguese Brazilian, Russian, Spanish, Turkish, Dutch
+Mod page: [url]https://mysmf.net/mods/dquote-selection[/url]
+SMF Mods Site page: [url]https://custom.simplemachines.org/mods/index.php?mod=2086[/url]
+GitHub page: [url]https://github.com/realdigger/SMF-dQuoteSelection[/url]
+
+[b]Installation[/b]
+Download and install latest release tar.gz file from releases page [url]https://github.com/realdigger/SMF-dQuoteSelection/releases[/url]
+
+[b]Description[/b]
+This mod adds ability to quote any selected text for the Quick Reply and Post reply areas.
+Send email notifications to quote authors.
+
+[b]Установка[/b]
+Загрузите и установите файл tar.gz актуальной версии со страницы загрузок [url]https://github.com/realdigger/SMF-dQuoteSelection/releases[/url]
+
+[b]Описание[/b]
+Заменяет стандартную кнопку "Цитировать" на "Цитировать выделенное".
+При наличии выделенного текста - копирует цитату с ним в форму быстрого ответа. Если форма быстрого ответа свернута - разворачивает и вставляет выделенную цитату.
+Если форма быстрого ответа отключена - копирует цитату целиком в полный ответ, независимо от того выделено что-то или нет.  
+Также, работает и на странице полного ответа.
+Отправляет уведомления на почту пользователям, которых процитировали.
