@@ -1,7 +1,7 @@
 <?php
 /**
  * Project: dQuote Selection
- * Version: 2.6.2
+ * Version: 2.7.0
  * File: hooks.php
  * Author: digger @ http://mysmf.ru
  * License: The MIT License (MIT)
@@ -30,7 +30,7 @@ if (!empty($context['uninstalling'])) {
 
 $hooks = array(
     'integrate_pre_include' => '$sourcedir/Mod-Dquote.php',
-    'integrate_pre_load' => 'loadDquoteHooks',
+    'integrate_pre_load'    => 'Dquote::loadHooks',
 );
 
 foreach ($hooks as $hook => $function) {
