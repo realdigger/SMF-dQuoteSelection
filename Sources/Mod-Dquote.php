@@ -127,8 +127,12 @@ class Dquote
             '
 		SELECT id_member, email_address
 		FROM {db_prefix}members
-		WHERE real_name IN ({array_string:names})',
-            array('names' => $names)
+		WHERE real_name IN ({array_string:names})
+		AND notify_announcements = {int:notify_announcements}',
+            array(
+                'names'                => $names,
+                'notify_announcements' => 1
+            )
         );
 
         $emails = array();
