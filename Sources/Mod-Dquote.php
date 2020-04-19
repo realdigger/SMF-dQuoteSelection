@@ -142,7 +142,7 @@ class Dquote
                 'email_address' => $row['email_address']
             );
         }
-var_dump($emails);die;
+
         $smcFunc['db_free_result']($request);
 
         return $emails;
