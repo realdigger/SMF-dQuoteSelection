@@ -1,7 +1,7 @@
 <?php
 /**
  * Project: dQuote Selection
- * Version: 2.7.0
+ * Version: 2.7.3
  * File: Mod-dQuote.php
  * Author: digger @ http://mysmf.ru
  * License: The MIT License (MIT)
@@ -43,28 +43,32 @@ class Dquote
         }
         $authors = array_unique($quotes[1]);
 
-        // Prepare email
+        // Prepare emails
         loadLanguage('Dquote/Dquote');
-        $body = $posterOptions['name'] . ' ' . $txt['dQuoteSelection_notify_txt'] . ' ' . $scripturl . '?topic=' . $topicOptions['id'] . '.msg' . $msgOptions['id'] . '#msg' . $msgOptions['id'] . "\n\r\n\r" . $txt['regards_team'];
+        $subject = $txt['dQuoteSelection_mail_subject'] . ' ' . $msgOptions['subject'];
 
         $recipients = Dquote::findEmails($authors);
         if (!$recipients) {
             return false;
         }
 
-        // Check recipients
-        $emails = array();
+        // Send mails
         foreach ($recipients as $recipient) {
+            // Check recipient
             if ($recipient['id_member'] == $posterOptions['id']) {
                 continue;
             }
-            $emails[] = $recipient['email_address'];
-        }
-        if (!$emails) {
-            return false;
-        }
 
-        sendmail($emails, $txt['dQuoteSelection_mail_subject_txt'] . ' ' . $mbname, $body);
+            $body = sprintf(
+                    $txt['dQuoteSelection_mail_body'],
+                    $recipient['real_name'],
+                    $posterOptions['name'],
+                    $msgOptions['subject'],
+                    $scripturl . '?topic=' . $topicOptions['id'] . '.msg' . $msgOptions['id'] . '#msg' . $msgOptions['id']
+                ) . "\n\r\n\r" . $txt['regards_team'];
+
+            sendmail($recipient['email_address'], $subject, $body);
+        }
 
         return true;
     }
@@ -105,7 +109,7 @@ class Dquote
 
         // Load JS
         $context['insert_after_template'] .= '
-        <script type="text/javascript" src="' . $settings['default_theme_url'] . '/scripts/dquote.js?270"></script>';
+        <script type="text/javascript" src="' . $settings['default_theme_url'] . '/scripts/dquote.js?272"></script>';
     }
 
     /**
@@ -125,22 +129,23 @@ class Dquote
         $request = $smcFunc['db_query'](
             '',
             '
-		SELECT id_member, email_address
+		SELECT id_member, email_address, real_name
 		FROM {db_prefix}members
 		WHERE real_name IN ({array_string:names})
 		AND notify_announcements = {int:notify_announcements}',
-            array(
+            [
                 'names'                => $names,
                 'notify_announcements' => 1
-            )
+            ]
         );
 
-        $emails = array();
+        $emails = [];
         while ($row = $smcFunc['db_fetch_assoc']($request)) {
-            $emails[] = array(
+            $emails[] = [
                 'id_member'     => $row['id_member'],
-                'email_address' => $row['email_address']
-            );
+                'email_address' => $row['email_address'],
+                'real_name'     => $row['real_name']
+            ];
         }
 
         $smcFunc['db_free_result']($request);
