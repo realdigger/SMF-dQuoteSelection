@@ -34,8 +34,7 @@ class Dquote
      */
     public static function sendNotification($msgOptions, $topicOptions, $posterOptions)
     {
-        global $txt, $sourcedir, $scripturl, $mbname;
-        require_once($sourcedir . '/Subs-Auth.php');
+        global $txt, $scripturl, $context;
 
         // Get all quote authors from post
         $quotesCount = preg_match_all('/\[quote\s+author=(.+)\s+link/U', $msgOptions['body'], $quotes);
@@ -44,14 +43,15 @@ class Dquote
         }
         $authors = array_unique($quotes[1]);
 
-        // Prepare emails
-        loadLanguage('Dquote/Dquote');
-        $subject = $txt['dQuoteSelection_mail_subject'] . ' ' . $msgOptions['subject'];
-
+        // Get recipients
         $recipients = Dquote::findRecipients($authors);
         if (!$recipients) {
             return false;
         }
+
+        // Prepare emails
+        loadLanguage('Dquote/Dquote');
+        $subject = $txt['dQuoteSelection_mail_subject'] . ' ' . $msgOptions['subject'];
 
         // Send mails
         foreach ($recipients as $recipient) {
@@ -63,7 +63,7 @@ class Dquote
             $body = sprintf(
                     $txt['dQuoteSelection_mail_body'],
                     $recipient['real_name'],
-                    $posterOptions['name'],
+                    $context['user']['name'],
                     $msgOptions['subject'],
                     $scripturl . '?topic=' . $topicOptions['id'] . '.msg' . $msgOptions['id'] . '#msg' . $msgOptions['id']
                 ) . "\n\r\n\r" . $txt['regards_team'];
