@@ -2,11 +2,11 @@
 
 Author: digger https://mysmf.net
 License: The MIT License (MIT)
-Compatible with: SMF 2.0
+Compatible with: SMF 2.0, PHP 5.4+
 Languages: English, Italian, Polish, Portuguese Brazilian, Russian, Spanish, Turkish, Dutch
 Mod page: [url]https://mysmf.net/mods/dquote-selection[/url]
-SMF Mods Site page: [url]https://custom.simplemachines.org/mods/index.php?mod=2086[/url]
-GitHub page: [url]https://github.com/realdigger/SMF-dQuoteSelection[/url]
+SMF mods site: [url]https://custom.simplemachines.org/mods/index.php?mod=2086[/url]
+GitHub: [url]https://github.com/realdigger/SMF-dQuoteSelection[/url]
 
 [b]Installation[/b]
 Download and install latest release tar.gz file from releases page [url]https://github.com/realdigger/SMF-dQuoteSelection/releases[/url]

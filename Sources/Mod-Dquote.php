@@ -1,9 +1,9 @@
 <?php
 /**
  * Project: dQuote Selection
- * Version: 2.7.3
+ * Version: 2.7.4
  * File: Mod-dQuote.php
- * Author: digger @ http://mysmf.ru
+ * Author: digger @ https://mysmf.ru
  * License: The MIT License (MIT)
  */
 
@@ -19,9 +19,10 @@ class Dquote
      */
     public static function loadHooks()
     {
-        add_integration_function('integrate_menu_buttons', 'Dquote::addCopyright', false);
-        add_integration_function('integrate_menu_buttons', 'Dquote::loadJS', false);
-        add_integration_function('integrate_dquote_notification', 'Dquote::sendNotification', false);
+        add_integration_function('integrate_menu_buttons', __CLASS__ . '::addCopyright', false);
+        add_integration_function('integrate_menu_buttons', __CLASS__ . '::loadJS', false);
+        add_integration_function('integrate_profile_areas', __CLASS__ . '::addSettings', false);
+        add_integration_function('integrate_dquote_notification', __CLASS__ . '::sendNotification', false);
     }
 
     /**
@@ -47,7 +48,7 @@ class Dquote
         loadLanguage('Dquote/Dquote');
         $subject = $txt['dQuoteSelection_mail_subject'] . ' ' . $msgOptions['subject'];
 
-        $recipients = Dquote::findEmails($authors);
+        $recipients = Dquote::findRecipients($authors);
         if (!$recipients) {
             return false;
         }
@@ -55,7 +56,7 @@ class Dquote
         // Send mails
         foreach ($recipients as $recipient) {
             // Check recipient
-            if ($recipient['id_member'] == $posterOptions['id']) {
+            if ($recipient['id_member'] == $posterOptions['id'] || $recipient['dquote_notify_type'] != 'email') {
                 continue;
             }
 
@@ -75,19 +76,21 @@ class Dquote
 
     /**
      * Add mod copyright to the forum credit's page
+     * @return void
      */
     public static function addCopyright()
     {
         global $context;
 
         if ($context['current_action'] == 'credits') {
-            $context['copyrights']['mods'][] = '<a href="https://mysmf.net/mods/dquote-selection" target="_blank">dQuoteSelection</a> &copy; 2007-2020, digger';
+            $context['copyrights']['mods'][] = '<a href="https://mysmf.net/mods/dquote-selection" target="_blank">dQuote Selection and Notification</a> &copy; 2007-2020, digger';
         }
     }
 
 
     /**
      * Load all needed js & css
+     * @return void
      */
     public static function loadJS()
     {
@@ -109,7 +112,7 @@ class Dquote
 
         // Load JS
         $context['insert_after_template'] .= '
-        <script type="text/javascript" src="' . $settings['default_theme_url'] . '/scripts/dquote.js?272"></script>';
+        <script type="text/javascript" src="' . $settings['default_theme_url'] . '/scripts/dquote.js?274"></script>';
     }
 
     /**
@@ -117,9 +120,10 @@ class Dquote
      * @param $names
      * @return array
      */
-    public static function findEmails($names)
+    private static function findRecipients($names)
     {
         global $smcFunc;
+        $recipients = [];
 
         // If it's not already an array, make it one.
         if (!is_array($names)) {
@@ -129,27 +133,64 @@ class Dquote
         $request = $smcFunc['db_query'](
             '',
             '
-		SELECT id_member, email_address, real_name
-		FROM {db_prefix}members
-		WHERE real_name IN ({array_string:names})
-		AND notify_announcements = {int:notify_announcements}',
+		SELECT m.id_member, m.email_address, m.real_name, t.value AS dquote_notify_type
+		FROM {db_prefix}members m
+		LEFT JOIN {db_prefix}themes t ON 
+		    t.id_member = m.id_member AND 
+		    t.id_theme = {int:id_theme} AND 
+		    t.variable = {string:variable}
+		WHERE real_name IN ({array_string:names})',
             [
-                'names'                => $names,
-                'notify_announcements' => 1
+                'names'    => $names,
+                'id_theme' => 1,
+                'variable' => 'dquote_notify_type'
             ]
         );
 
-        $emails = [];
         while ($row = $smcFunc['db_fetch_assoc']($request)) {
-            $emails[] = [
-                'id_member'     => $row['id_member'],
-                'email_address' => $row['email_address'],
-                'real_name'     => $row['real_name']
+            $recipients[] = [
+                'id_member'          => $row['id_member'],
+                'email_address'      => $row['email_address'],
+                'real_name'          => $row['real_name'],
+                'dquote_notify_type' => !empty($row['dquote_notify_type']) ? $row['dquote_notify_type'] : 'email',
             ];
         }
 
         $smcFunc['db_free_result']($request);
 
-        return $emails;
+        return $recipients;
+    }
+
+
+    /**
+     * Add profile settings
+     * @return void
+     */
+    public static function addSettings()
+    {
+        global $context, $txt, $options, $sourcedir;
+
+        if (!empty($context['user']['id']) && !empty($_GET['area']) && $_GET['area'] == 'notification' && $context['user']['is_owner']) {
+            require_once($sourcedir . '/Profile-Modify.php');
+            loadLanguage('Dquote/Dquote');
+
+            // Set default option to email
+            if (empty($options['dquote_notify_type'])) {
+                $options['dquote_notify_type'] = 'email';
+            }
+
+            $txt['notify_send_body'] .= '</label><br />
+                        <br />
+                        <label>' . $txt['dQuoteSelection_notify_type'] . '
+                                <select name="options[dquote_notify_type]" id="dquote_notify_type">
+		    		        		<option value="email"' . ($options['dquote_notify_type'] == 'email' ? ' selected' : '') . '>' . $txt['dQuoteSelection_notify_type_email'] . '</option>                                
+	    				            <option value="none"' . ($options['dquote_notify_type'] == 'none' ? ' selected' : '') . '>' . $txt['dQuoteSelection_notify_type_none'] . '</option>
+                                </select>
+                        ';
+
+            makeThemeChanges($context['user']['id'], 1);
+        } else {
+            return;
+        }
     }
 }
