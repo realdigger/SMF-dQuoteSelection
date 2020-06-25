@@ -4,8 +4,8 @@ global $boardurl;
 
 $txt['dQuoteSelection_txt']               = 'Цитировать (выделенное)';
 $txt['dQuoteSelection_notify_type']       = 'Уведомлять меня при цитировании моих сообщений:';
-$txt['dQuoteSelection_notify_type_none']  = 'нет';
-$txt['dQuoteSelection_notify_type_email'] = 'по e-mail';
+$txt['dQuoteSelection_notify_type_none']  = 'Нет';
+$txt['dQuoteSelection_notify_type_email'] = 'По e-mail';
 $txt['dQuoteSelection_mail_subject']      = 'Вы были процитированы в сообщении: ';
 $txt['dQuoteSelection_mail_body']         = 'Привет, %s!
 

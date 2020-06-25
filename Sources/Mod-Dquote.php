@@ -179,14 +179,13 @@ class Dquote
                 $options['dquote_notify_type'] = 'email';
             }
 
-            $txt['notify_send_body'] .= '</label><br />
-                        <br />
-                        <label>' . $txt['dQuoteSelection_notify_type'] . '
-                                <select name="options[dquote_notify_type]" id="dquote_notify_type">
-		    		        		<option value="email"' . ($options['dquote_notify_type'] == 'email' ? ' selected' : '') . '>' . $txt['dQuoteSelection_notify_type_email'] . '</option>                                
-	    				            <option value="none"' . ($options['dquote_notify_type'] == 'none' ? ' selected' : '') . '>' . $txt['dQuoteSelection_notify_type_none'] . '</option>
-                                </select>
-                        ';
+            $txt['notify_send_type_nothing'] .= '</option>
+                        </select>
+                        <br /><br />
+                        <label for="dquote_notify_type">' . $txt['dQuoteSelection_notify_type'] . '</label>
+                        <select name="options[dquote_notify_type]" id="dquote_notify_type">
+		    		        	<option value="email"' . ($options['dquote_notify_type'] == 'email' ? ' selected' : '') . '>' . $txt['dQuoteSelection_notify_type_email'] . '</option>                                
+	    				        <option value="none"' . ($options['dquote_notify_type'] == 'none' ? ' selected' : '') . '>' . $txt['dQuoteSelection_notify_type_none'];
 
             makeThemeChanges($context['user']['id'], 1);
         } else {
