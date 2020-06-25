@@ -2,13 +2,16 @@
 
 global $boardurl;
 
-$txt['dQuoteSelection_txt']          = 'Цитировать (выделенное)';
-$txt['dQuoteSelection_mail_subject'] = 'Вы были процитированы в сообщении: ';
-$txt['dQuoteSelection_mail_body']    = 'Привет, %s!
+$txt['dQuoteSelection_txt']               = 'Цитировать (выделенное)';
+$txt['dQuoteSelection_notify_type']       = 'Уведомлять меня при цитировании моих сообщений:';
+$txt['dQuoteSelection_notify_type_none']  = 'нет';
+$txt['dQuoteSelection_notify_type_email'] = 'по e-mail';
+$txt['dQuoteSelection_mail_subject']      = 'Вы были процитированы в сообщении: ';
+$txt['dQuoteSelection_mail_body']         = 'Привет, %s!
 
 Вы были процитированы %s в сообщении "%s".
 
 Прочитать сообщение:
 %s
 
-Вы можете отказаться от этого и прочих почтовых уведомлений в настройках своего профиля, перейдя по ссылке ' . $boardurl . '?action=profile;area=notification и сняв выбор с пункта "Получать новости, объявления и важные уведомления форума по e-mail".';
+Вы можете отказаться от этих уведомлений в настройках своего профиля по ссылке ' . $boardurl . '?action=profile;area=notification';

@@ -5,11 +5,11 @@
 # SMF dQuote Selection and Notification [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=SMF%20dQuoteSelection.%20This%20mod%20adds%20ability%20to%20quote%20any%20selected%20text%20for%20the%20Quick%20Reply%20and%20Post%20reply%20areas.&url=https://github.com/realdigger/SMF-dQuoteSelection&hashtags=smf,dQuoteSelection)
 * **Author:** digger https://mysmf.net
 * **License:** The MIT License (MIT)
-* **Compatible with:** SMF 2.0
+* **Compatible with:** SMF 2.0, PHP 5.4+
 * **Languages:** English, Italian, Polish, Portuguese Brazilian, Russian, Spanish, Turkish, Dutch
 * **Mod page:** https://mysmf.net/mods/dquote-selection
-* **SMF Mods Site page:** https://custom.simplemachines.org/mods/index.php?mod=2086
-* **GitHub page:** https://github.com/realdigger/SMF-dQuoteSelection
+* **SMF мods site:** https://custom.simplemachines.org/mods/index.php?mod=2086
+* **GitHub:** https://github.com/realdigger/SMF-dQuoteSelection
 
 ## Installation  
 Download and install latest release tar.gz file from [releases page](https://github.com/realdigger/SMF-dQuoteSelection/releases).
