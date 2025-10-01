@@ -83,7 +83,7 @@ class Dquote
         global $context;
 
         if ($context['current_action'] == 'credits') {
-            $context['copyrights']['mods'][] = '<a href="https://mysmf.net/mods/dquote-selection" target="_blank">dQuote Selection and Notification</a> &copy; 2007-2020, digger';
+            $context['copyrights']['mods'][] = '<a href="https://mysmf.net/mods/dquote-selection" target="_blank">dQuote Selection and Notification</a> &copy; 2007-2025, digger';
         }
     }
 
